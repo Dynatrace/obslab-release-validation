@@ -1,3 +1,3 @@
 # Resources
 
-- [This repository and documentation on GitHub](https://github.com/dynatrace-perfclinics/obslab-release-validation)
+- [This repository and documentation on GitHub](https://github.com/dynatrace/obslab-release-validation)

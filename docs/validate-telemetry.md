@@ -86,7 +86,7 @@ fetch logs, scanLimitGBytes: 1
 
 If these four things are OK, your telemetry is flowing correctly into Dynatrace.
 
-If not, please [search for similar problems and / or raise an issue here](https://github.com/dynatrace-perfclinics/obslab-release-validation/issues){target="_blank"}.
+If not, please [search for similar problems and / or raise an issue here](https://github.com/dynatrace/obslab-release-validation/issues){target="_blank"}.
 
 ```
 # TODO: Make this a better UX? Provide a fix script?

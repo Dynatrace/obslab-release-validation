@@ -25,6 +25,6 @@ In Dynatrace:
 
 Click this button to open the demo environment. This will open in a new tab.
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-perfclinics/obslab-release-validation){target="_blank"}
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace/obslab-release-validation){target="_blank"}
 
 ## [Click Here to Continue...](validate-telemetry.md)
