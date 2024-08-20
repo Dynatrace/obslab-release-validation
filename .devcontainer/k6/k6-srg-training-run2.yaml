@@ -1,0 +1,34 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: k6-training-run2
+spec:
+  template:
+    spec:
+      containers:
+      - name: k6
+        image: hrexed/xk6-dynatrace-output:0.11
+        args: ["run", "/script.js", "-o", "output-dynatrace"]
+        volumeMounts:
+        - name: config-volume
+          mountPath: /script.js
+          subPath: script.js
+        env:
+          - name: K6_DYNATRACE_URL
+            valueFrom:
+              secretKeyRef:
+                name: dt-details
+                key: DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION
+          - name: K6_DYNATRACE_APITOKEN
+            valueFrom:
+              secretKeyRef:
+                name: dt-details
+                key: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
+          - name: LOAD_TEST_PURPOSE
+            value: "training"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: k6-training-config
+      restartPolicy: Never

@@ -1,0 +1,131 @@
+opentelemetry-collector:
+  extraEnvs:
+    - name: DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION
+      valueFrom:
+        secretKeyRef:
+          name: dt-details
+          key: DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION
+    - name: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
+      valueFrom:
+        secretKeyRef:
+          name: dt-details
+          key: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
+  config:
+    receivers:
+      kubeletstats:
+        collection_interval: 20s
+        auth_type: "serviceAccount"
+        endpoint: "https://$K8S_NODE_NAME:10250"
+        insecure_skip_verify: true
+    exporters:
+      otlphttp/dynatrace:
+        endpoint: "$DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION/api/v2/otlp"
+        headers:
+          Authorization: "Api-Token $DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION"
+    
+    processors:
+      transform:
+        metric_statements:
+          - context: metric
+            statements:
+              # Get count from the histogram. The new metric name will be <histogram_name>_count
+              - extract_count_metric(true) where type == METRIC_DATA_TYPE_HISTOGRAM
+
+              # Get sum from the histogram. The new metric name will be <histogram_name>_sum
+              - extract_sum_metric(true) where type == METRIC_DATA_TYPE_HISTOGRAM
+          - context: datapoint
+            statements:
+              # convert the <histogram_name>_sum metrics to gauges.
+              - convert_sum_to_gauge() where IsMatch(metric.name, ".*_sum")
+      filter:
+        error_mode: ignore
+        metrics:
+          metric:
+            - 'type == METRIC_DATA_TYPE_HISTOGRAM'
+            - 'type == METRIC_DATA_TYPE_SUMMARY'
+      cumulativetodelta:
+
+
+      k8sattributes:
+        auth_type: "serviceAccount"
+        passthrough: false
+    
+        extract:
+          metadata:
+            - k8s.pod.name
+            - k8s.pod.uid
+            - k8s.deployment.name
+            - k8s.statefulset.name
+            - k8s.daemonset.name
+            - k8s.cronjob.name
+            - k8s.namespace.name
+            - k8s.node.name
+            - k8s.cluster.uid
+        pod_association:
+          - sources:
+            - from: resource_attribute
+              name: k8s.pod.name
+            - from: resource_attribute
+              name: k8s.namespace.name
+          # Pod labels which can be fetched via K8sattributeprocessor
+
+    service:
+      pipelines:
+        traces:
+          processors: [k8sattributes]
+          exporters: [spanmetrics, otlphttp/dynatrace]
+        logs:
+          processors: [k8sattributes]
+          exporters: [otlphttp/dynatrace]
+        metrics:
+          processors: [transform, filter, k8sattributes, cumulativetodelta]
+          exporters: [otlphttp/dynatrace]
+components:
+  accountingService:
+    enabled: false
+  adService:
+    enabled: true
+  cartService:
+    enabled: true
+  checkoutService:
+    enabled: true
+  currencyService:
+    enabled: true
+  emailService:
+    enabled: true
+  frauddetectionService:
+    enabled: true
+  frontend:
+    enabled: true
+    envOverrides:
+      - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+        value: https://CODESPACE_NAME_PLACEHOLDER-8080.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN_PLACEHOLDER/otlp-http/v1/traces
+  frontendProxy:
+    enabled: true
+  imageprovider:
+    enabled: true
+  loadgenerator:
+    enabled: true
+  paymentService:
+    enabled: true
+  productCatalogService:
+    enabled: true
+  quoteService:
+    enabled: true
+  recommendationService:
+    enabled: true
+  shippingService:
+    enabled: true
+  flagd:
+    enabled: true
+  kafka:
+    enabled: true
+  valkey:
+    enabled: true
+
+grafana:
+  enabled: false
+jaeger:
+  enabled: false
+opensearch:
+  enabled: false

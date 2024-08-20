@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k6-training-config
+data:
+  script.js: |
+    import http from 'k6/http';
+    import { sleep } from 'k6';
+
+    let test_duration = "1m";
+
+    export const options = {
+        vus: 1,
+        duration: test_duration,
+      };
+
+    let get_params = {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+        },
+    };
+
+    let post_params = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Api-Token ${__ENV.K6_DYNATRACE_APITOKEN}`
+      },
+    };
+
+    export default function main_load_test() {
+      // Your main test here
+      // For example, a simple GET request
+      http.get('https://CODESPACE_NAME_PLACEHOLDER-8080.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN_PLACEHOLDER', get_params);
+      sleep(1);
+    }
+
+    export function teardown() {
+      // Send SDLC event at the end of the test
+      let payload = {
+        "event.provider": "k6",
+        "event.type": "test",
+        "event.category": "finished",
+        "purpose": `${__ENV.LOAD_TEST_PURPOSE}`,
+        "duration": test_duration,
+        "service": "checkoutservice"
+      }
+      let res = http.post(`${__ENV.K6_DYNATRACE_URL}/platform/ingest/v1/events.sdlc`, JSON.stringify(payload), post_params);
+    }
