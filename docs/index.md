@@ -1,9 +1,5 @@
 # Release Validation for SREs with Site Reliability Guardian
 
-```
-## TODO: Add video overview of this demo when recorded.
-```
-
 In this demo, you take on the role of a Site Reliability Engineer (SRE). You are running an application, consisting of a number of microservices.
 
 The application is already instrumented to emit tracing data, using the [OpenTelemetry](https://opentelemetry.io){target="_blank"} standard. The demo system will be automatically configured to transport that data to Dynatrace for storage and processing.
