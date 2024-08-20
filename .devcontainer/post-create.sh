@@ -14,8 +14,6 @@ OTEL_DEMO_VERSION=0.32.3
 # - $DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
 #
 # Use `printenv` to see all env vars.
-# TODO: Move towards the user supplying a single API token (which has permissions to create other API tokens) to make codespace setup simpler
-# Although the tradeoff here is clarity for the user as to what's actually happening (too much magic?) Will need to be explained in the docs.
 ####################################
 
 # Replace placeholders in helm-values.yaml with realtime values
