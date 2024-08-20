@@ -18,6 +18,7 @@ In Dynatrace:
 * Create a new access token with the following permissions:
     * `metrics.ingest`
     * `logs.ingest`
+    * `events.ingest`
     * `openTelemetryTrace.ingest`
     * `openpipeline.events_sdlc`
 
