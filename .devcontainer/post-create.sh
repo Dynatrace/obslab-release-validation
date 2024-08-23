@@ -39,3 +39,13 @@ kubectl create secret generic dt-details --from-literal=DT_ENDPOINT_OBSLAB_RELEA
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm repo update
 helm install my-otel-demo open-telemetry/opentelemetry-demo --values .devcontainer/otel-demo/helm-values.yaml --version $OTEL_DEMO_VERSION
+
+# Creation Ping
+curl -X POST https://grzxx1q7wd.execute-api.us-east-1.amazonaws.com/default/codespace-tracker \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"tenant\": \"$DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION\",
+    \"repo\": \"$GITHUB_REPOSITORY\",
+    \"demo\": \"obslab-release-validation\",
+    \"codespace.name\": \"$CODESPACE_NAME\"
+  }"
