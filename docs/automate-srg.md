@@ -11,7 +11,7 @@ Let's plumb that together now.
 
 ### Sample k6 teardown test finished event
 
-This is already coded into the [demo load test script](https://github.com/dynatrace/demo-release-validation/blob/main/.devcontainer/k6/k6-load-test-script.yaml#L38){target="_blank"}.
+This is already coded into the [demo load test script](https://github.com/dynatrace/obslab-release-validation/blob/main/.devcontainer/k6/k6-load-test-script.yaml#L38){target="_blank"}.
 
 ```javascript
 export function teardown() {
