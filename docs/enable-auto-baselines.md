@@ -103,4 +103,6 @@ The automatic baselines for the guardian are now enabled.
 
 You can proceed to use the guardian for "real" evaluations.
 
-## [Click Here to Continue...](run-production-srg.md)
+<div class="grid cards" markdown>
+- [Click Here to Continue:octicons-arrow-right-24:](run-production-srg.md)
+</div>

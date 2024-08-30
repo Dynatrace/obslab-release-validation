@@ -76,4 +76,6 @@ The workflow is now created and connected to the guardian. It will be triggered 
 
 The workflow is now live and listening for events.
 
-## [Click Here to Continue...](enable-auto-baselines.md)
+<div class="grid cards" markdown>
+- [Click Here to Continue:octicons-arrow-right-24:](enable-auto-baselines.md)
+</div>

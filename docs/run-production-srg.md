@@ -54,4 +54,6 @@ To set an objective as "information only":
 
 ![objective no thresholds](images/dt-objective-no-thresholds.png)
 
-## [Click Here to Continue...](enable-change.md)
+<div class="grid cards" markdown>
+- [Click Here to Continue:octicons-arrow-right-24:](enable-change.md)
+</div>

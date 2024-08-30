@@ -33,5 +33,6 @@ It is your job to:
 | Dynatrace Managed  | ❌                 |
 | Dynatrace SaaS     | ✔️                 |
 
-
-## [Click Here to Begin...](getting-started.md)
+<div class="grid cards" markdown>
+- [Click Here to Begin :octicons-arrow-right-24:](getting-started.md)
+</div>

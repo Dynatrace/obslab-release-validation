@@ -24,5 +24,6 @@ Note: This process can be automated for at-scale usage using [Monaco or Terrafor
 ```
 ## TODO: Need secondary tutorial on this? Link to it for each...
 ```
-
-## [Click Here to Continue...](automate-srg.md)
+<div class="grid cards" markdown>
+- [Click Here to Continue:octicons-arrow-right-24:](automate-srg.md)
+</div>

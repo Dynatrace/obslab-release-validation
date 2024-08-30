@@ -71,4 +71,6 @@ So how did things turn out?
 
 The Dynatrace Platform, Site Reliability Guardian and Workflows have provided visibility and automated change analysis.
 
-## [Cleanup Resources >>](cleanup.md)
+<div class="grid cards" markdown>
+- [Cleanup Resources :octicons-arrow-right-24:](cleanup.md)
+</div>

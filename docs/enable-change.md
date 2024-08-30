@@ -39,4 +39,6 @@ You can send event for anything you like: deployments, load tests, security scan
 ![payment service event](images/paymentservice-event.png)
 
 
-## [Click Here to Continue...](view-acceptance-test-results.md)
+<div class="grid cards" markdown>
+- [Click Here to Continue:octicons-arrow-right-24:](view-acceptance-test-results.md)
+</div>

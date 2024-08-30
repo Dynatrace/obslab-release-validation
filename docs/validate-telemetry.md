@@ -83,4 +83,6 @@ If these four things are OK, your telemetry is flowing correctly into Dynatrace.
 
 If not, please [search for similar problems and / or raise an issue here](https://github.com/dynatrace/obslab-release-validation/issues){target="_blank"}.
 
-## [Click Here to Continue...](create-srg.md)
+<div class="grid cards" markdown>
+- [Click Here to Continue:octicons-arrow-right-24:](create-srg.md)
+</div>

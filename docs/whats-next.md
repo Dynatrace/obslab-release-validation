@@ -1,7 +1,5 @@
 # What's Next?
 
-> TODO
+TODO
 
-Content about how the user progresses after this demo...
-
-## [Resources](resources.md)
+Content about how the user progresses after this demo.
