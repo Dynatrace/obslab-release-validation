@@ -1,6 +1,6 @@
 # Observability Lab: Release Validation
 
-In this demo, you take on the role of a Site Reliability Engineer (SRE). You are running an application, consisting of a number of microservices.
+In this demo, you take on the role of a Product Manager or DevOps engineer. You are running an application, and wish to enable a new feature.
 
 The application is already instrumented to emit tracing data, using the OpenTelemetry standard. The demo system will be automatically configured to transport that data to Dynatrace for storage and processing.
 

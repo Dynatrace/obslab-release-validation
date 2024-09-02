@@ -1,6 +1,6 @@
-# Release Validation for SREs with Site Reliability Guardian
+# Release Validation for DevOps Engineers with Site Reliability Guardian
 
-In this demo, you take on the role of a Site Reliability Engineer (SRE). You are running an application, consisting of a number of microservices.
+In this demo, you take on the role of a Product Manager or DevOps engineer. You are running an application, and wish to enable a new feature.
 
 The application is already instrumented to emit tracing data, using the [OpenTelemetry](https://opentelemetry.io){target="_blank"} standard. The demo system will be automatically configured to transport that data to Dynatrace for storage and processing.
 
@@ -24,7 +24,7 @@ It is your job to:
 * Judge the impact (if any) of that change on the application.
 * If an impact is observed, gather the evidence and then disable the feature flag.
 * Make the "go / no go" decision for that feature.
-* Provide feedback to the product managers on why you made the decision you did.
+* Provide feedback on why you made the decision you did.
 
 ## Compatibility
 
