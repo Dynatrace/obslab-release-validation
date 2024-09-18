@@ -320,6 +320,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#logical-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#compatibility" class="md-nav__link">
     <span class="md-ellipsis">
       Compatibility
@@ -592,6 +601,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#logical-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#compatibility" class="md-nav__link">
     <span class="md-ellipsis">
       Compatibility
@@ -641,6 +659,41 @@
 <li>Make the "go / no go" decision for that feature.</li>
 <li>Provide feedback on why you made the decision you did.</li>
 </ul>
+<h2 id="logical-architecture">Logical Architecture<a class="headerlink" href="#logical-architecture" title="Permanent link">#</a></h2>
+<p>Below is the "flow" of information and actors during this demo.</p>
+<p>This architecture also holds true for other load testing tools (eg. JMeter).</p>
+<ol>
+<li>
+<p>A load test is executed.
+The HTTP requests are annotated with <a href="https://docs.dynatrace.com/docs/platform-modules/automations/cloud-automation/test-automation#tag-tests-with-http-headers" target="_blank">the standard header values</a>.</p>
+</li>
+<li>
+<p>Metrics are streamed during the load test (if the load testing tool supports this)
+or the metrics are send at the end of the load test.</p>
+</li>
+<li>
+<p>The load testing tool is responsible for sending an SDLC event to signal "test is finished".
+Integrators are responsible for crafting this event to contain any important information required by Dynatrace
+such as the test duration.</p>
+</li>
+<li>
+<p>A <a href="https://docs.dynatrace.com/docs/platform-modules/automations/workflows" target="_blank">workflow</a> is triggered on receipt of this event.
+The workflow triggers the <a href="https://docs.dynatrace.com/docs/platform-modules/automations/site-reliability-guardian" target="_blank">Site Reliability Guardian</a>.</p>
+</li>
+<li>
+<p>The Site Reliability Guardian processes the load testing metrics and to provide an automated load testing report.
+This can be used for information only or can be used as an automated "go / no go" decision point.</p>
+</li>
+<li>
+<p>Dynatrace users can view the results in a dashboard, notebook or use the result as a trigger for further automated workflows.</p>
+</li>
+<li>
+<p>Integrators have the choice to send (emit) the results to an external tool.
+This external tool can then use this result.
+One example would be sending the SRG result to Jenkins to progress or prevent a deployment.</p>
+</li>
+</ol>
+<p><img alt="Logical Architecture" src="images/load-test-integration-flow.jpg" /></p>
 <h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">#</a></h2>
 <table>
 <thead>
