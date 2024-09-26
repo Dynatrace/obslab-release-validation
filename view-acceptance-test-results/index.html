@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
       </div>
@@ -249,7 +249,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
     </div>
@@ -649,8 +649,11 @@
   <h1>9. View Acceptance Test Results</h1>
 
 <h2 id="view-data">View Data<a class="headerlink" href="#view-data" title="Permanent link">#</a></h2>
-<p>After ~3 minutes, <code>kubectl get jobs</code> should show the <code>acceptance-load-test</code> to be <code>Complete</code>.</p>
-<p>Refresh the Site Reliability Guardian results heatmap again and you should see that the guardian has failed.</p>
+<p>Wait for all jobs to complete:</p>
+<div class="highlight"><pre><span></span><code>kubectl -n default wait --for=condition=Complete --all --timeout 120s jobs
+</code></pre></div>
+<p>All jobs (including the <code>acceptance-load-test</code>) should now be <code>Complete</code>.</p>
+<p>Refresh the Site Reliability Guardian results heatmap again and notice that the guardian has failed.</p>
 <p><img alt="srg acceptance test failed" src="../images/dt-srg-acceptance-test-failed.png" /></p>
 <p>The guardian has failed due to the error rate being too high.</p>
 <p><img alt="checkoutservice error rate too high" src="../images/dt-srg-checkoutservice-error-rate-too-high.png" /></p>
@@ -664,22 +667,27 @@
 <p>These failures are bubbling up through the request chain back towards the checkoutservice.</p>
 <p>Ultimately though, the failure comes from the final span in the trace: The call to <code>PaymentService/Charge</code>.</p>
 <p>Investigating the span events the cause of the failure becomes clear: The payment service cuase an exception. The exception message and stacktrace is given:</p>
-<pre><code>exception.message   PaymentService Fail Feature Flag Enabled
+<div class="highlight"><pre><span></span><code>exception.message   PaymentService Fail Feature Flag Enabled
 exception.stacktrace    Error: PaymentService Fail Feature Flag Enabled at module.exports.charge
   (/usr/src/app/charge.js:21:11) at process.processTicksAndRejections
   (node:internal/process/task_queues:95:5) at async Object.chargeServiceHandler
   [as charge] (/usr/src/app/index.js:21:22)
 exception.type  Error
-</code></pre>
+</code></pre></div>
 <p><img alt="root cause: payment service" src="../images/dt-span-root-cause-paymentservice.png" /></p>
 <h2 id="roll-back-change">Roll Back Change<a class="headerlink" href="#roll-back-change" title="Permanent link">#</a></h2>
-<p>Roll back the change:</p>
-<pre><code>./runtimeChange.sh paymentServiceFailure off
-</code></pre>
+<p>Inform Dynatrace that a change in configuration is coming.
+The <code>paymentServiceFailure</code> flag will be set to <code>off</code></p>
+<div class="highlight"><pre><span></span><code>./runtimeChange.sh paymentServiceFailure off
+</code></pre></div>
+<p>Again edit <code>flags.yaml</code> and set the <code>defaultValue</code> of <code>paymentServiceFailure</code> from <code>"on"</code> to <code>"off"</code> (line <code>84</code>)</p>
+<p>Apply the chnages:</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
+</code></pre></div>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">#</a></h2>
 <p>Looking back at the initial brief, it was your job to:</p>
 <ul>
-<li>Enable that feature flag in a development environment.</li>
+<li>Enable a feature flag in a development environment.</li>
 <li>Judge the impact (if any) of that change on the application.</li>
 <li>If an impact is observed, gather the evidence and then disable the feature flag.</li>
 <li>Make the "go / no go" decision for that feature.</li>
@@ -694,7 +702,15 @@ exception.type  Error
 <li>You have made the <code>no go</code> decision based on evidence provided by OpenTelemetry and the Dynatrace Site Reliability Guardian.</li>
 <li>You can provide this evidence (down to the stacktrace and line of code) back to the product manager so they can prioritise fixes.</li>
 </ul>
+<div class="admonition hint">
+<p class="admonition-title">Works with any metric</p>
+<p>The techniques described here work with any metric, from any source.</p>
+<p>You are encouraged to use metrics from other devices and sources (such as business related metrics like revenue).</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
 <p>The Dynatrace Platform, Site Reliability Guardian and Workflows have provided visibility and automated change analysis.</p>
+</div>
 <div class="grid cards">
 <ul>
 <li><a href="../cleanup/">Cleanup Resources <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span></a></li>

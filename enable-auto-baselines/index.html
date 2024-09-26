@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
       </div>
@@ -249,7 +249,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
     </div>
@@ -490,15 +490,6 @@
   <a href="#view-srg-status-in-the-site-reliability-guardian-app" class="md-nav__link">
     <span class="md-ellipsis">
       View SRG Status in the Site Reliability Guardian App
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#training-complete" class="md-nav__link">
-    <span class="md-ellipsis">
-      Training Complete
     </span>
   </a>
   
@@ -745,15 +736,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#training-complete" class="md-nav__link">
-    <span class="md-ellipsis">
-      Training Complete
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -777,49 +759,50 @@
 <p>In a real scenario, these test runs would likely be spread over hours, days or weeks. This provides Dynatrace with ample time to gather sufficient usage data.</p>
 <p>For demo purposes, 5 seperate "load tests" will be triggered in quick succession to enable the baselining.</p>
 <p>First, open a new terminal window and apply the load test script:</p>
-<pre><code>kubectl apply -f .devcontainer/k6/k6-load-test-script.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6-load-test-script.yaml
+</code></pre></div>
 <h2 id="trigger-the-first-load-test">Trigger the First Load Test<a class="headerlink" href="#trigger-the-first-load-test" title="Permanent link">#</a></h2>
-<pre><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run1.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run1.yaml
+</code></pre></div>
 <h2 id="trigger-the-second-load-test">Trigger the Second Load Test<a class="headerlink" href="#trigger-the-second-load-test" title="Permanent link">#</a></h2>
 <p>Wait a few seconds and trigger the second load test:</p>
-<pre><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run2.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run2.yaml
+</code></pre></div>
 <h2 id="trigger-the-third-load-test">Trigger the Third Load Test<a class="headerlink" href="#trigger-the-third-load-test" title="Permanent link">#</a></h2>
 <p>Wait a few seconds and trigger the third load test:</p>
-<pre><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run3.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run3.yaml
+</code></pre></div>
 <h2 id="trigger-the-fourth-load-test">Trigger the Fourth Load Test<a class="headerlink" href="#trigger-the-fourth-load-test" title="Permanent link">#</a></h2>
 <p>Wait a few seconds and trigger the fourth load test:</p>
-<pre><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run4.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run4.yaml
+</code></pre></div>
 <h2 id="trigger-the-final-training-load-test">Trigger the Final Training Load Test<a class="headerlink" href="#trigger-the-final-training-load-test" title="Permanent link">#</a></h2>
 <p>Wait a few seconds and trigger the final (fifth) load test:</p>
-<pre><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run5.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6-srg-training-run5.yaml
+</code></pre></div>
 <h2 id="wait-for-completion">Wait for Completion<a class="headerlink" href="#wait-for-completion" title="Permanent link">#</a></h2>
-<p>Each load test runs for 1 minute so keep running the following command until you see all jobs listed as <code>Complete</code>:</p>
-<pre><code>kubectl get jobs
-</code></pre>
-<pre><code>➜ /workspaces/obslab-release-validation (main) $ kubectl get jobs
+<p>Each load test runs for 1 minute. Run this command to wait for all jobs to complete.</p>
+<p>This command will appear to hang until the jobs are done. Be patient. It should take about 2mins:</p>
+<div class="highlight"><pre><span></span><code>kubectl -n default wait --for=condition=Complete --all --timeout 120s jobs
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>➜ /workspaces/obslab-release-validation (main) $ kubectl get jobs
 NAME               STATUS     COMPLETIONS   DURATION   AGE
 k6-training-run1   Complete   1/1           95s        2m2s
 k6-training-run2   Complete   1/1           93s        115s
 k6-training-run3   Complete   1/1           93s        108s
 k6-training-run4   Complete   1/1           90s        100s
 k6-training-run5   Complete   1/1           84s        94s
-</code></pre>
+</code></pre></div>
 <h2 id="view-completed-training-runs">View Completed Training Runs<a class="headerlink" href="#view-completed-training-runs" title="Permanent link">#</a></h2>
 <p>In Dynatrace, go to <code>workflows</code> and select <code>Executions</code>. You should see 5 successful workflow executions:</p>
 <p><img alt="dynatrace training runs" src="../images/dt-workflows-training-complete.png" /></p>
 <h3 id="view-srg-status-using-dql">View SRG Status using DQL<a class="headerlink" href="#view-srg-status-using-dql" title="Permanent link">#</a></h3>
 <p>You can also use this DQL to see the Site Reliability Guardian results in a notebook:</p>
-<pre><code>fetch bizevents
+<div class="highlight"><pre><span></span><code>fetch bizevents
 | filter event.provider == &quot;dynatrace.site.reliability.guardian&quot;
 | filter event.type == &quot;guardian.validation.finished&quot;
 | fieldsKeep guardian.id, validation.id, timestamp, guardian.name, validation.status, validation.summary, validation.from, validation.to
-</code></pre>
+</code></pre></div>
 <p><img alt="dynatrace view SRG results in a notebook" src="../images/dt-notebook-view-srg-results.png" /></p>
 <h2 id="view-srg-status-in-the-site-reliability-guardian-app">View SRG Status in the Site Reliability Guardian App<a class="headerlink" href="#view-srg-status-in-the-site-reliability-guardian-app" title="Permanent link">#</a></h2>
 <p>The SRG results are also available in the Site Reliabiltiy Guardian app:</p>
@@ -830,9 +813,11 @@ k6-training-run5   Complete   1/1           84s        94s
 </ul>
 <p>You should see the <code>5</code> runs listed:</p>
 <p><img alt="srg training runs" src="../images/dt-srg-training-runs.png" /></p>
-<h2 id="training-complete">Training Complete<a class="headerlink" href="#training-complete" title="Permanent link">#</a></h2>
+<div class="admonition success">
+<p class="admonition-title">Training Complete</p>
 <p>The automatic baselines for the guardian are now enabled.</p>
 <p>You can proceed to use the guardian for "real" evaluations.</p>
+</div>
 <div class="grid cards">
 <ul>
 <li><a href="../run-production-srg/">Click Here to Continue<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span></a></li>

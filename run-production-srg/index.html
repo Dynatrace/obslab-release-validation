@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
       </div>
@@ -249,7 +249,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
     </div>
@@ -431,21 +431,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run an Evaluation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setting-objectives-to-informational-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting Objectives to Informational Only
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -587,21 +572,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run an Evaluation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setting-objectives-to-informational-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting Objectives to Informational Only
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -624,46 +594,55 @@
 
   <h1>7. Run a Production SRG</h1>
 
-<p>The preparation phase is now complete. Everything before now is a one-off task.</p>
+<div class="admonition info">
+<p class="admonition-title">Preparation Complete</p>
+<p>The preparation phase is now complete.
+Everything before now is a one-off task.</p>
 <p>In day-to-day operations, you would begin from here.</p>
+</div>
 <h2 id="run-an-evaluation">Run an Evaluation<a class="headerlink" href="#run-an-evaluation" title="Permanent link">#</a></h2>
 <p>Now that the Site Reliability Guardian is trained, run another evaluation by triggering a load test.</p>
-<blockquote>
-<p>Remember, the workflow is currently configured to listen for <code>test finished</code> events but you could easily create additional workflows with different triggers such as on-demand on time-based CRON triggers.</p>
-</blockquote>
-<p>Run another load test to trigger a sixth evaluation.</p>
-<pre><code>kubectl apply -f .devcontainer/k6/k6.yaml
-</code></pre>
-<p>After about 90 seconds, <code>kubectl get jobs</code> should show:</p>
-<pre><code>➜ /workspaces/obslab-release-validation (main) $ kubectl get jobs
-NAME               STATUS     COMPLETIONS   DURATION   AGE
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Remember, the workflow is currently configured to listen for <code>test finished</code> events
+but you could easily create additional workflows with different triggers such as on-demand on time-based CRON triggers.</p>
+<p>This provides an ability to continuously test your service (eg. in production).</p>
+</div>
+<p>Run another load test to trigger a sixth evaluation.
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6.yaml
+</code></pre></div></p>
+<p>Again, wait for all jobs to complete. This run will take longer. Approximately 2mins.</p>
+<div class="highlight"><pre><span></span><code>kubectl -n default wait --for=condition=Complete --all --timeout 120s jobs
+</code></pre></div>
+<p>When the above command returns, you should see:</p>
+<div class="highlight"><pre><span></span><code>NAME               STATUS     COMPLETIONS   DURATION   AGE
 k6-training-run1   Complete   1/1           102s       9m41s
 k6-training-run2   Complete   1/1           100s       9m33s
 k6-training-run3   Complete   1/1           101s       9m23s
 k6-training-run4   Complete   1/1           93s        9m17s
 k6-training-run5   Complete   1/1           91s        9m11s
 run-k6             Complete   1/1           79s        81s
-
-</code></pre>
+</code></pre></div>
 <p>When this evaluation is completed, click the <code>Refresh</code> button in the <code>Validation history</code> panel of the site reliability guardian app (when viewing an individual guardian) and the heatmap should look like the image below</p>
-<blockquote>
-<p>Note: Your results may vary.</p>
-<p>In this example below, the <code>Traffic</code> objective failed because the auto-adaptive thresholds detected that a traffic level below <code>1171</code> requests is too low and the actual traffic level was <code>1158</code>.
-Because one objective failed, the guardian failed.</p>
-</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Your results may vary</p>
+<p>Your results may vary.
+In this example below, the <code>Traffic</code> objective failed because the auto-adaptive thresholds detected that a traffic level below <code>1171</code> requests is too low and the actual traffic level was <code>1158</code>.</p>
+<p>Because one objective failed, the guardian failed.</p>
+</div>
 <p>5 training runs and 1 "real" run:</p>
 <p><img alt="5 training runs and 1 &quot;real&quot; run" src="../images/dt-srg-screen-7.png" /></p>
 <p><img alt="all metrics are green" src="../images/dt-srg-screen-8.png" /></p>
-<h3 id="setting-objectives-to-informational-only">Setting Objectives to Informational Only<a class="headerlink" href="#setting-objectives-to-informational-only" title="Permanent link">#</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Information Only Objectives</p>
 <p>It is possible to add objectives that are "informational only" and do not contribute to the pass / fail decisions.</p>
 <p>This is useful for new services where you are trying to "get a feel for" the real-world data values of your metrics.</p>
-<p>To set an objective as "information only":</p>
-<ul>
-<li>Select the objective to open the side panel</li>
-<li>Scroll down to <code>Define thresholds</code></li>
-<li>Select the <code>No thresholds</code> option</li>
-</ul>
+<p>To set an objective as "information only":
+* Select the objective to open the side panel
+* Scroll down to <code>Define thresholds</code>
+* Select the <code>No thresholds</code> option</p>
 <p><img alt="objective no thresholds" src="../images/dt-objective-no-thresholds.png" /></p>
+</div>
 <div class="grid cards">
 <ul>
 <li><a href="../enable-change/">Click Here to Continue<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span></a></li>

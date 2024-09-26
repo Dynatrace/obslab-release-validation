@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
       </div>
@@ -249,7 +249,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
     </div>
@@ -389,18 +389,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sample-k6-teardown-test-finished-event" class="md-nav__link">
+  <a href="#create-a-workflow-to-trigger-guardian" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample k6 teardown test finished event
+      Create a Workflow to Trigger Guardian
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-workflow-to-trigger-guardian" class="md-nav__link">
+  <a href="#workflow-created" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a Workflow to Trigger Guardian
+      Workflow Created
     </span>
   </a>
   
@@ -581,18 +581,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sample-k6-teardown-test-finished-event" class="md-nav__link">
+  <a href="#create-a-workflow-to-trigger-guardian" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample k6 teardown test finished event
+      Create a Workflow to Trigger Guardian
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-workflow-to-trigger-guardian" class="md-nav__link">
+  <a href="#workflow-created" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a Workflow to Trigger Guardian
+      Workflow Created
     </span>
   </a>
   
@@ -624,29 +624,30 @@
 <li>A Dynatrace workflow will react to that event and trigger a guardian.</li>
 </ul>
 <p>Let's plumb that together now.</p>
-<h3 id="sample-k6-teardown-test-finished-event">Sample k6 teardown test finished event<a class="headerlink" href="#sample-k6-teardown-test-finished-event" title="Permanent link">#</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Sample k6 teardown test finished event</p>
+<p>For information only, no action is required.</p>
 <p>This is already coded into the <a href="https://github.com/dynatrace/obslab-release-validation/blob/main/.devcontainer/k6/k6-load-test-script.yaml#L38" target="_blank">demo load test script</a>.</p>
-<pre><code class="language-javascript">export function teardown() {
-    let post_params = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Api-Token ${__ENV.K6_DYNATRACE_APITOKEN}`
-      },
-    };
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">teardown</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Send event at the end of the test</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;entitySelector&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;type(SERVICE),entityName.equals(checkoutservice)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;eventType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM_INFO&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;properties&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;tool&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;k6&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;action&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;state&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;purpose&quot;</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">__ENV</span><span class="p">.</span><span class="nx">LOAD_TEST_PURPOSE</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;duration&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">test_duration</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="s2">&quot;title&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;k6 load test finished&quot;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    let test_duration = 2m;
-
-    // Send SDLC event at the end of the test
-    let payload = {
-      &quot;event.provider&quot;: &quot;k6&quot;,
-      &quot;event.type&quot;: &quot;test&quot;,
-      &quot;event.category&quot;: &quot;finished&quot;,
-      &quot;service&quot;: &quot;checkoutservice&quot;,
-      &quot;duration&quot;: test_duration
-    }
-    let res = http.post(`${__ENV.K6_DYNATRACE_URL}/platform/ingest/v1/events.sdlc`, JSON.stringify(payload), post_params);
-}
-</code></pre>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">__ENV</span><span class="p">.</span><span class="nx">K6_DYNATRACE_URL</span><span class="si">}</span><span class="sb">/api/v2/events/ingest`</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span><span class="w"> </span><span class="nx">post_params</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
 <h2 id="create-a-workflow-to-trigger-guardian">Create a Workflow to Trigger Guardian<a class="headerlink" href="#create-a-workflow-to-trigger-guardian" title="Permanent link">#</a></h2>
 <p>Ensure you are still on the <code>Three golden signals (checkoutservice)</code> screen.</p>
 <ul>
@@ -654,25 +655,30 @@
 <li>Change the <code>event type</code> from <code>bizevents</code> to <code>events</code>.</li>
 <li>Change the <code>Filter query</code> to:</li>
 </ul>
-<pre><code>event.type == &quot;test&quot;
-AND event.category == &quot;finished&quot;
-AND service == &quot;checkoutservice&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>event.type == &quot;CUSTOM_INFO&quot; and
+dt.entity.service.name == &quot;checkoutservice&quot; and
+tool == &quot;k6&quot; and
+action == &quot;test&quot; and
+state == &quot;finished&quot;
+</code></pre></div>
 <ul>
 <li>Click the <code>run_validation</code> node.</li>
 <li>Remove <code>event.timeframe.from</code> and replace with:</li>
 </ul>
-<pre><code>now-{{ event()['duration'] }}
-</code></pre>
+<div class="highlight"><pre><span></span><code>now-{{ event()[&#39;duration&#39;] }}
+</code></pre></div>
 <p>The UI will change this to <code>now-event.duration</code>.</p>
 <ul>
-<li>Remove <code>event.timeframe.to</code> and replace with:</li>
+<li>
+<p>Remove <code>event.timeframe.to</code> and replace with:
+<div class="highlight"><pre><span></span><code>now
+</code></pre></div></p>
+</li>
+<li>
+<p>Click the <code>Save</code> button.</p>
+</li>
 </ul>
-<pre><code>now
-</code></pre>
-<ul>
-<li>Click the <code>Save</code> button.</li>
-</ul>
+<h2 id="workflow-created">Workflow Created<a class="headerlink" href="#workflow-created" title="Permanent link">#</a></h2>
 <p>The workflow is now created and connected to the guardian. It will be triggered whenever the platform receives an event like below.</p>
 <p><img alt="dynatrace automate SRG button" src="../images/dt-srg-screen-6.png" />
 <img alt="dynatrace workflow trigger 1" src="../images/dt-workflow-screen-1.png" />

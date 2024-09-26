@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
       </div>
@@ -249,7 +249,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
     </div>
@@ -454,6 +454,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#change-flag-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Flag Value
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#run-acceptance-load-test" class="md-nav__link">
     <span class="md-ellipsis">
       Run Acceptance Load Test
@@ -593,6 +602,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#change-flag-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change Flag Value
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#run-acceptance-load-test" class="md-nav__link">
     <span class="md-ellipsis">
       Run Acceptance Load Test
@@ -633,25 +651,31 @@
 <p>A product manager informs you that they're ready to release their new feature. They ask you to enable the feature and run the load test in a dev environment.</p>
 <p>They tell you that the new feature is behind a flag called <code>paymentServiceFailure</code> (yes, an obvious name for this demo) and they tell you to change the <code>defaultValue</code> from <code>off</code> to <code>on</code>.</p>
 <h2 id="update-the-feature-flag-and-inform-dynatrce">Update the Feature Flag and Inform Dynatrce<a class="headerlink" href="#update-the-feature-flag-and-inform-dynatrce" title="Permanent link">#</a></h2>
-<p>Run the following script which:</p>
-<ul>
-<li>Notifies Dynatrace using a <code>CUSTOM_INFO</code> event of the change inc. the new value</li>
-<li>Changes the <code>defaultValue</code> of the <code>paymentServiceFailure</code> feature flag to <code>on</code></li>
-<li>Applies the configuration change</li>
-</ul>
-<pre><code>./runtimeChange.sh paymentServiceFailure on
-</code></pre>
+<p>Run the following script which notifies Dynatrace using a <code>CUSTOM_INFO</code> event of the change inc. the new value.</p>
+<div class="highlight"><pre><span></span><code>./runtimeChange.sh paymentServiceFailure on
+</code></pre></div>
+<h2 id="change-flag-value">Change Flag Value<a class="headerlink" href="#change-flag-value" title="Permanent link">#</a></h2>
+<p>Locate the <code>flags.yaml</code> file.
+Change the <code>defaultValue</code> of the <code>paymentServiceFailure</code> flag from <code>"off"</code> to <code>"on"</code> (line <code>84</code>).</p>
+<p>Apply those changes:</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
+</code></pre></div>
+<p>You should see:</p>
+<div class="highlight"><pre><span></span><code>configmap/my-otel-demo-flagd-config configured
+</code></pre></div>
 <h2 id="run-acceptance-load-test">Run Acceptance Load Test<a class="headerlink" href="#run-acceptance-load-test" title="Permanent link">#</a></h2>
 <p>It is time to run an acceptance load test to see if the new feature has caused a regression.</p>
 <p>This load test will run for 3 minutes and then trigger the site reliability guardian again:</p>
-<pre><code>kubectl apply -f .devcontainer/k6/k6-after-change.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/k6/k6-after-change.yaml
+</code></pre></div>
 <h2 id="configuration-change-events">Configuration Change Events<a class="headerlink" href="#configuration-change-events" title="Permanent link">#</a></h2>
-<p>While you are waiting for the load test to complete, it is worth noting that each time a feature flag is changed, the <code>runtimeChange.sh</code> shell script sends an event to the service that is affected.</p>
+<p>While you are waiting for the load test to complete, it is worth noting that each time a feature flag is changed, you should execute <code>runtimeChange.sh</code> shell script to send an event to the service that is affected.</p>
 <p>The feature flag changes the behaviour of the <code>paymentservice</code> (which the <code>checkoutservice</code> depends on).</p>
-<p>Look at the <code>paymentservice</code> and notice the configuration changed events noted.</p>
-<p>Dynatrace AI uses these events as part of the root cause analysis engine.</p>
+<p>Look at the <code>paymentservice</code> and notice the configuration changed events.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>You can send event for anything you like: deployments, load tests, security scans, configuration changes and more.</p>
+</div>
 <p><img alt="payment service event" src="../images/paymentservice-event.png" /></p>
 <div class="grid cards">
 <ul>

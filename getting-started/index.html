@@ -203,7 +203,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
       </div>
@@ -249,7 +249,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    View Code on GitHub
   </div>
 </a>
     </div>
@@ -329,11 +329,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#format-dynatrace-environment-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Dynatrace Environment URL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format Dynatrace Environment URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#create-api-token" class="md-nav__link">
     <span class="md-ellipsis">
       Create API Token
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -581,11 +596,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#format-dynatrace-environment-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format Dynatrace Environment URL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format Dynatrace Environment URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#create-api-token" class="md-nav__link">
     <span class="md-ellipsis">
       Create API Token
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -622,9 +652,18 @@
 <li>A Dynatrace environment (<a href="https://dt-url.net/trial" target="_blank">sign up here</a>)</li>
 <li>A Dynatrace API token (see below)</li>
 </ul>
-<p>Save the Dynatrace environment URL <strong>without</strong> the trailing slash and without the <code>.apps.</code> in the URL:</p>
-<pre><code>https://abc12345.live.dynatrace.com
-</code></pre>
+<h2 id="format-dynatrace-environment-url">Format Dynatrace Environment URL<a class="headerlink" href="#format-dynatrace-environment-url" title="Permanent link">#</a></h2>
+<p>Save the Dynatrace environment URL:</p>
+<ul>
+<li>Without the trailing slash</li>
+<li>Without <code>.apps.</code> in the URL</li>
+</ul>
+<p>The generic format is:</p>
+<div class="highlight"><pre><span></span><code>https://&lt;EnvironmentID&gt;.&lt;Environment&gt;.&lt;URL&gt;
+</code></pre></div>
+<p>For example:
+<div class="highlight"><pre><span></span><code>https://abc12345.live.dynatrace.com
+</code></pre></div></p>
 <h3 id="create-api-token">Create API Token<a class="headerlink" href="#create-api-token" title="Permanent link">#</a></h3>
 <p>In Dynatrace:</p>
 <ul>
@@ -634,7 +673,6 @@
 <li><code>logs.ingest</code></li>
 <li><code>events.ingest</code></li>
 <li><code>openTelemetryTrace.ingest</code></li>
-<li><code>openpipeline.events_sdlc</code></li>
 </ul>
 </li>
 </ul>
