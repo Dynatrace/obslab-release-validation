@@ -1,8 +1,14 @@
 ## View Data
 
-After ~3 minutes, `kubectl get jobs` should show the `acceptance-load-test` to be `Complete`.
+Wait for all jobs to complete:
 
-Refresh the Site Reliability Guardian results heatmap again and you should see that the guardian has failed.
+```
+kubectl -n default wait --for=condition=Complete --all --timeout 120s jobs
+```
+
+All jobs (including the `acceptance-load-test`) should now be `Complete`.
+
+Refresh the Site Reliability Guardian results heatmap again and notice that the guardian has failed.
 
 ![srg acceptance test failed](images/dt-srg-acceptance-test-failed.png)
 
@@ -44,17 +50,26 @@ exception.type	Error
 
 ## Roll Back Change
 
-Roll back the change:
+Inform Dynatrace that a change in configuration is coming.
+The `paymentServiceFailure` flag will be set to `off`
 
 ```
 ./runtimeChange.sh paymentServiceFailure off
+```
+
+Again edit `flags.yaml` and set the `defaultValue` of `paymentServiceFailure` from `"on"` to `"off"` (line `84`)
+
+Apply the chnages:
+
+```
+kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 ```
 
 ## Summary
 
 Looking back at the initial brief, it was your job to:
 
-* Enable that feature flag in a development environment.
+* Enable a feature flag in a development environment.
 * Judge the impact (if any) of that change on the application.
 * If an impact is observed, gather the evidence and then disable the feature flag.
 * Make the "go / no go" decision for that feature.
@@ -69,7 +84,15 @@ So how did things turn out?
 * You have made the `no go` decision based on evidence provided by OpenTelemetry and the Dynatrace Site Reliability Guardian.
 * You can provide this evidence (down to the stacktrace and line of code) back to the product manager so they can prioritise fixes.
 
-The Dynatrace Platform, Site Reliability Guardian and Workflows have provided visibility and automated change analysis.
+!!! hint "Works with any metric"
+    The techniques described here work with any metric, from any source.
+
+    You are encouraged to use metrics from other devices and sources (such as business related metrics like revenue).
+
+!!! success
+    The Dynatrace Platform, Site Reliability Guardian and Workflows have provided visibility and automated change analysis.
+
+
 
 <div class="grid cards" markdown>
 - [Cleanup Resources :octicons-arrow-right-24:](cleanup.md)

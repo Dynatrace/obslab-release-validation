@@ -39,7 +39,7 @@ The HTTP requests are annotated with [the standard header values](https://docs.d
 1. Metrics are streamed during the load test (if the load testing tool supports this)
 or the metrics are send at the end of the load test.
 
-1. The load testing tool is responsible for sending an SDLC event to signal "test is finished".
+1. The load testing tool is responsible for sending an event to signal "test is finished".
 Integrators are responsible for crafting this event to contain any important information required by Dynatrace
 such as the test duration.
 

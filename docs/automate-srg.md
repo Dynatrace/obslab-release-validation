@@ -9,32 +9,32 @@ In this demo:
 
 Let's plumb that together now.
 
-### Sample k6 teardown test finished event
+!!! info "Sample k6 teardown test finished event"
 
-This is already coded into the [demo load test script](https://github.com/dynatrace/obslab-release-validation/blob/main/.devcontainer/k6/k6-load-test-script.yaml#L38){target="_blank"}.
+    For information only, no action is required.
+    
+    This is already coded into the [demo load test script](https://github.com/dynatrace/obslab-release-validation/blob/main/.devcontainer/k6/k6-load-test-script.yaml#L38){target="_blank"}.
 
-```javascript
-export function teardown() {
-    let post_params = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Api-Token ${__ENV.K6_DYNATRACE_APITOKEN}`
-      },
-    };
-
-    let test_duration = 2m;
-
-    // Send SDLC event at the end of the test
-    let payload = {
-      "event.provider": "k6",
-      "event.type": "test",
-      "event.category": "finished",
-      "service": "checkoutservice",
-      "duration": test_duration
+    ```javascript
+    export function teardown() {
+        // Send event at the end of the test
+        let payload = {
+          "entitySelector": "type(SERVICE),entityName.equals(checkoutservice)",
+          "eventType": "CUSTOM_INFO",
+          "properties": {
+            "tool": "k6",
+            "action": "test",
+            "state": "finished",
+            "purpose": `${__ENV.LOAD_TEST_PURPOSE}`,
+            "duration": test_duration
+          },
+          "title": "k6 load test finished"
+        }
+      
+        let res = http.post(`${__ENV.K6_DYNATRACE_URL}/api/v2/events/ingest`, JSON.stringify(payload), post_params);
+      }
     }
-    let res = http.post(`${__ENV.K6_DYNATRACE_URL}/platform/ingest/v1/events.sdlc`, JSON.stringify(payload), post_params);
-}
-```
+    ```
 
 ## Create a Workflow to Trigger Guardian
 
@@ -45,9 +45,11 @@ Ensure you are still on the `Three golden signals (checkoutservice)` screen.
 * Change the `Filter query` to:
 
 ```
-event.type == "test"
-AND event.category == "finished"
-AND service == "checkoutservice"
+event.type == "CUSTOM_INFO" and
+dt.entity.service.name == "checkoutservice" and
+tool == "k6" and
+action == "test" and
+state == "finished"
 ```
 
 * Click the `run_validation` node.
@@ -67,6 +69,8 @@ now
 ```
 
 * Click the `Save` button.
+
+## Workflow Created
 
 The workflow is now created and connected to the guardian. It will be triggered whenever the platform receives an event like below.
 

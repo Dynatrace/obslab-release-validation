@@ -51,10 +51,12 @@ kubectl apply -f .devcontainer/k6/k6-srg-training-run5.yaml
 
 ## Wait for Completion
 
-Each load test runs for 1 minute so keep running the following command until you see all jobs listed as `Complete`:
+Each load test runs for 1 minute. Run this command to wait for all jobs to complete.
+
+This command will appear to hang until the jobs are done. Be patient. It should take about 2mins:
 
 ```
-kubectl get jobs
+kubectl -n default wait --for=condition=Complete --all --timeout 120s jobs
 ```
 
 ```
@@ -97,11 +99,10 @@ You should see the `5` runs listed:
 
 ![srg training runs](images/dt-srg-training-runs.png)
 
-## Training Complete
+!!! success "Training Complete"
+    The automatic baselines for the guardian are now enabled.
 
-The automatic baselines for the guardian are now enabled.
-
-You can proceed to use the guardian for "real" evaluations.
+    You can proceed to use the guardian for "real" evaluations.
 
 <div class="grid cards" markdown>
 - [Click Here to Continue:octicons-arrow-right-24:](run-production-srg.md)

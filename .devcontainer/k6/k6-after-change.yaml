@@ -36,16 +36,21 @@ data:
     }
 
     export function teardown() {
-      // Send SDLC event at the end of the test
+      // Send event at the end of the test
       let payload = {
-        "event.provider": "k6",
-        "event.type": "test",
-        "event.category": "finished",
-        "purpose": `${__ENV.LOAD_TEST_PURPOSE}`,
-        "duration": test_duration,
-        "service": "checkoutservice"
+        "entitySelector": "type(SERVICE),entityName.equals(checkoutservice)",
+        "eventType": "CUSTOM_INFO",
+        "properties": {
+          "tool": "k6",
+          "action": "test",
+          "state": "finished",
+          "purpose": `${__ENV.LOAD_TEST_PURPOSE}`,
+          "duration": test_duration
+        },
+        "title": "k6 load test finished"
       }
-      let res = http.post(`${__ENV.K6_DYNATRACE_URL}/platform/ingest/v1/events.sdlc`, JSON.stringify(payload), post_params);
+      
+      let res = http.post(`${__ENV.K6_DYNATRACE_URL}/api/v2/events/ingest`, JSON.stringify(payload), post_params);
     }
 ---
 apiVersion: batch/v1

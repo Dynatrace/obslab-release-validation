@@ -19,11 +19,9 @@ We will create a guardian to check the `checkoutservice` microservice which is u
 ![dynatrace site reliability guardian: screen 4](images/dt-srg-screen-4.png)
 ![dynatrace site reliability guardian: screen 5](images/dt-srg-screen-5.png)
 
-Note: This process can be automated for at-scale usage using [Monaco or Terraform](https://docs.dynatrace.com/docs/manage/configuration-as-code){target="_blank"}.
+!!! tip "Automate at scale"
+    This process can be automated for at-scale usage using [Monaco or Terraform](https://docs.dynatrace.com/docs/manage/configuration-as-code){target="_blank"}.
 
-```
-## TODO: Need secondary tutorial on this? Link to it for each...
-```
 <div class="grid cards" markdown>
 - [Click Here to Continue:octicons-arrow-right-24:](automate-srg.md)
 </div>
