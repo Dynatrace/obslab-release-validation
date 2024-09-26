@@ -59,7 +59,7 @@ The `paymentServiceFailure` flag will be set to `off`
 
 Again edit `flags.yaml` and set the `defaultValue` of `paymentServiceFailure` from `"on"` to `"off"` (line `84`)
 
-Apply the chnages:
+Apply the changes:
 
 ```
 kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
