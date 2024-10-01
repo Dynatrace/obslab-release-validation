@@ -45,11 +45,18 @@ In Dynatrace, follow these steps:
 
 ### Validate Services
 
-* Press `ctrl + k`. Search for `services`. Go to services screen and validate you can see services.
-* Open a service and validate that the URL contains `SERVICE-****`.
-    * If the URL contains `CUSTOM_DEVICE-****`:
-        * Press `ctrl + k` and search for `settings`.
-        * Go to `Service Detection > Unified services for OpenTelemetry` and ensure the toggle is on.
+* Press `ctrl + k`. Search for `services`. Go to services screen and validate you can see services
+* Open a service
+
+!!! info "Check URL Contents"
+    If the URL contains `SERVICE-<SomeIDHere>` ignore the rest of this bubble and continue to [Validate Traces](#validate-traces)
+
+    ----
+
+    If the URL contains `CUSTOM_DEVICE-<SomeIDHere>`:
+
+    * Press `ctrl + k` and search for `settings`.
+    * Go to `Service Detection > Unified services for OpenTelemetry` and ensure the toggle is on.
 
 ![dynatrace: services screen](images/dt-services-screen.png)
 
