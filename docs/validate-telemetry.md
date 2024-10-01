@@ -1,5 +1,8 @@
 # Start The Demo
 
+!!! tip
+    Right click and "open image in new tab" to see large images
+
 After the codespaces has started, the post creation script should begin. This will install everything and will take a few moments.
 
 When the script has completed, a success message will briefly be displayed (it is so quick you'll probably miss it) and an empty terminal window will be shown.
