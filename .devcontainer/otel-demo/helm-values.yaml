@@ -4,11 +4,13 @@ opentelemetry-collector:
       valueFrom:
         secretKeyRef:
           name: dt-details
+          namespace: obslab-release-validation
           key: DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION
     - name: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
       valueFrom:
         secretKeyRef:
           name: dt-details
+          namespace: obslab-release-validation
           key: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
   config:
     receivers:
@@ -97,9 +99,9 @@ components:
     enabled: true
   frontend:
     enabled: true
-    envOverrides:
-      - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-        value: https://CODESPACE_NAME_PLACEHOLDER-8080.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN_PLACEHOLDER/otlp-http/v1/traces
+    # envOverrides:
+    #   - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+    #     value: https://CODESPACE_NAME_PLACEHOLDER-8080.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN_PLACEHOLDER/otlp-http/v1/traces
   frontendProxy:
     enabled: true
   imageprovider:

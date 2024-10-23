@@ -16,7 +16,8 @@ nav:
   - "12. What's Next?": whats-next.md
 theme:
   name: material
-  custom_dir: custom_theme
+  features:
+    - content.code.copy
   palette:
 
   # Palette toggle for automatic mode
@@ -38,8 +39,6 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to system preference
-  features:
-    - content.code.copy
 markdown_extensions:
   - attr_list
   - toc:
