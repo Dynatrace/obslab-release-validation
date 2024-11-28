@@ -442,7 +442,7 @@ components:
       - name: LOCUST_SPAWN_RATE
         value: "1"
       - name: LOCUST_HOST
-        value: 'http://{{ include "otel-demo.name" . }}-frontendproxy:8080'
+        value: 'http://{{ include "otel-demo.name" . }}-frontendproxy.obslab-release-validation.svc.cluster.local:8080'
       - name: LOCUST_HEADLESS
         value: "false"
       - name: LOCUST_AUTOSTART
@@ -727,14 +727,14 @@ opentelemetry-collector:
       kubeletstats:
         collection_interval: 20s
         auth_type: "serviceAccount"
-        endpoint: "https://$K8S_NODE_NAME:10250"
+        endpoint: "https://${env:K8S_NODE_NAME}:10250"
         insecure_skip_verify: true
 
     exporters:
       otlphttp/dynatrace:
-        endpoint: "$DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION/api/v2/otlp"
+        endpoint: "${env:DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION}/api/v2/otlp"
         headers:
-          Authorization: "Api-Token $DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION"
+          Authorization: "Api-Token ${env:DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION}"
 
     processors:
       # This processor is used to help limit high cardinality on next.js span names
