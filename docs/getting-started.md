@@ -35,6 +35,8 @@ In Dynatrace:
 
 ## Start Demo
 
+--8<-- "snippets/codespace-details-warning-box.md"
+
 Click this button to open the demo environment. This will open in a new tab.
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace/obslab-release-validation){target="_blank"}
