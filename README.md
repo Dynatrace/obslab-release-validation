@@ -14,4 +14,10 @@ To achieve these objectives, you will:
 - Create a Site Reliability Guardian to test and ensure the health of your microservices (starting with the most user impacting service - the checkoutservice)
 - Use the auto baselining capability of Dynatrace to suggest (and dynamically adjust) thresholds based on current and past performance.
 
+## Watch Overview Video on YouTube
+
+Click the image below to watch the overview video on YouTube:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/91t_NWnTFWA/0.jpg)](https://www.youtube.com/watch?v=91t_NWnTFWA)
+
 ## [Start the hands-on here >>](https://dynatrace.github.io/obslab-release-validation/)
