@@ -18,6 +18,6 @@ To achieve these objectives, you will:
 
 Click the image below to watch the overview video on YouTube:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/91t_NWnTFWA/0.jpg)](https://www.youtube.com/watch?v=91t_NWnTFWA)
+[![Validate Software Releases with Dynatrace Overview Video](https://img.youtube.com/vi/91t_NWnTFWA/0.jpg)](https://www.youtube.com/watch?v=91t_NWnTFWA)
 
 ## [Start the hands-on here >>](https://dynatrace.github.io/obslab-release-validation/)
