@@ -744,14 +744,24 @@
 <p><img alt="success message" src="../images/success-message.png" /></p>
 <p><img alt="empty terminal" src="../images/empty-terminal.png" /></p>
 <h2 id="wait-for-demo-to-start">Wait For Demo to Start<a class="headerlink" href="#wait-for-demo-to-start" title="Permanent link">#</a></h2>
-<p>Wait for the demo application pods to start:</p>
+<p>Wait for the demo application pods to start by using hte following command.</p>
 <div class="highlight"><pre><span></span><code>kubectl -n default wait --for=condition=Ready --all --timeout 300s pod
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Command Stuck?</p>
+<p>This command will appear to "hang". That is expected behaviour. It isn't hanging, it is waiting.</p>
+<p>This command will only return when all pods are ready OR the timeout has been reached.</p>
+</div>
 <h2 id="access-demo-user-interface">Access Demo User Interface<a class="headerlink" href="#access-demo-user-interface" title="Permanent link">#</a></h2>
 <p>Start port forwarding to access the user interface:</p>
 <div class="highlight"><pre><span></span><code>kubectl -n default port-forward svc/my-otel-demo-frontendproxy 8080
 </code></pre></div>
 <p>Leave this command running. Open a new terminal window to run any other commands.</p>
+<div class="admonition note">
+<p class="admonition-title">Command Stuck?</p>
+<p>This command will appear to "hang". That is expected behaviour. It isn't hanging, it is working correctly.</p>
+<p>Leave this command running to keep the port forwarding alive.</p>
+</div>
 <p>Go to ports tab, right click the <code>demo app</code> entry and choose <code>Open in browser</code>.</p>
 <p><img alt="ports tab: open in browser" src="../images/ports-open-in-browser.png" /></p>
 <p>You should see the OpenTelemetry demo:</p>
