@@ -2,6 +2,7 @@
 
 --8<-- "snippets/disclaimer.md"
 --8<-- "snippets/view-code.md"
+--8<-- "snippets/overview-video.md"
 
 In this demo, you take on the role of a Product Manager or DevOps engineer. You are running an application, and wish to enable a new feature.
 
