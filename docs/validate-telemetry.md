@@ -13,11 +13,16 @@ When the script has completed, a success message will briefly be displayed (it i
 
 ## Wait For Demo to Start
 
-Wait for the demo application pods to start:
+Wait for the demo application pods to start by using hte following command.
 
 ```
 kubectl -n default wait --for=condition=Ready --all --timeout 300s pod
 ```
+
+!!! note "Command Stuck?"
+    This command will appear to "hang". That is expected behaviour. It isn't hanging, it is waiting.
+
+    This command will only return when all pods are ready OR the timeout has been reached.
 
 ## Access Demo User Interface
 
@@ -28,6 +33,11 @@ kubectl -n default port-forward svc/my-otel-demo-frontendproxy 8080
 ```
 
 Leave this command running. Open a new terminal window to run any other commands.
+
+!!! note "Command Stuck?"
+    This command will appear to "hang". That is expected behaviour. It isn't hanging, it is working correctly.
+
+    Leave this command running to keep the port forwarding alive.
 
 Go to ports tab, right click the `demo app` entry and choose `Open in browser`.
 
