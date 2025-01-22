@@ -17,6 +17,8 @@ In Dynatrace:
     * `events.ingest`
     * `openTelemetryTrace.ingest`
 
+--8<-- "snippets/save-info-final.md"
+
 ## Start Demo
 
 --8<-- "snippets/codespace-details-warning-box.md"

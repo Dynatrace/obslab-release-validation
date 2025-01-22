@@ -734,7 +734,7 @@ opentelemetry-collector:
       otlphttp/dynatrace:
         endpoint: "${env:DT_ENDPOINT}/api/v2/otlp"
         headers:
-          Authorization: "Api-Token ${env:DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION}"
+          Authorization: "Api-Token ${env:DT_API_TOKEN}"
 
     processors:
       # This processor is used to help limit high cardinality on next.js span names

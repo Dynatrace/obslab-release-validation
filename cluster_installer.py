@@ -33,11 +33,6 @@ run_command(["kind", "delete", "cluster"])
 # Push = False for the first set
 # because we push on the final git commit
 
-# TEMP
-CODESPACE_NAME="temp-foobar"
-GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN="apps.github.dev"
-# END TEMP
-
 logger.info("Doing file replacements...")
 # Replace placeholders in helm-values.yaml with realtime values
 do_file_replace(pattern=".devcontainer/otel-demo/helm-values.yaml", find_string="CODESPACE_NAME_PLACEHOLDER", replace_string=CODESPACE_NAME, recursive=False)
@@ -65,6 +60,5 @@ run_command(["helm", "repo", "update"])
 
 logger.info("Installing otel demo")
 output = run_command(["helm", "install", "my-otel-demo", "open-telemetry/opentelemetry-demo", "--values=.devcontainer/otel-demo/helm-values.yaml", f"--version={OTEL_DEMO_VERSION}"])
-print(output.returncode)
 
-# #send_startup_ping(demo_name="obslab-testing")
+# send_startup_ping(demo_name="obslab-testing")

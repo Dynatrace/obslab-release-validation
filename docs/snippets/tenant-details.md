@@ -29,7 +29,7 @@ You may be running in an environment other than `live`. You can see this by the 
 | `https://<EnvironmentID>.sprint.dynatracelabs.com` | https://abc12345.sprint.dynatracelabs.com |  `sprint`     |
 
 !!! success "Save the info"
-    You should now have 2 pieces of info like:
+    You should now have 2 pieces of info:
     
     * Environment ID: `abc12345`
     * Environment: `live`
