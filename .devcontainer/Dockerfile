@@ -15,7 +15,7 @@ RUN chmod +x /tmp/scripts/docker.sh
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install zsh ca-certificates gnupg jq -y && \
-    apt-get install gh python3 python3-pip && \
+    apt-get install gh python3 python3-pip -y && \
     apt-get autoremove -y && \
     apt-get clean -y
 
