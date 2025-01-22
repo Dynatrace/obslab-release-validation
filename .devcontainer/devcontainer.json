@@ -44,14 +44,17 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ".devcontainer/post-create.sh",
+	"postCreateCommand": "python3 cluster_installer.py",
 
 	// // Add recommended secrets
 	"secrets": {
-	 	  "DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION": {
-	            "description": "eg. https://abc12345.live.dynatrace.com"
+	 	  "DT_ENVIRONMENT_ID": {
+	            "description": "eg. abc12345 from https://abc12345.live.dynatrace.com"
 		},
-		  "DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION": {
+		  "DT_ENVIRONMENT_TYPE": {
+			"description": "eg. live, sprint or dev. If unsure, use live."
+		},
+		  "DT_API_TOKEN": {
 	    	    "description": "Dynatrace API token with these permissions: `metrics.ingest`, `logs.ingest`, `openTelemetryTrace.ingest`, `events.ingest`"
 		}
 	}

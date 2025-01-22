@@ -5,23 +5,7 @@ You must have the following to use this hands on demo.
 * A Dynatrace environment ([sign up here](https://dt-url.net/trial){target="_blank"})
 * A Dynatrace API token (see below)
 
-## Format Dynatrace Environment URL
-
-Save the Dynatrace environment URL:
-
-* Without the trailing slash
-* Without `.apps.` in the URL
-
-The generic format is:
-
-```
-https://<EnvironmentID>.<Environment>.<URL>
-```
-
-For example:
-```
-https://abc12345.live.dynatrace.com
-```
+--8<-- "snippets/tenant-details.md"
 
 ### Create API Token
 In Dynatrace:
