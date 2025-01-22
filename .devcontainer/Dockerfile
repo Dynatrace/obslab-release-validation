@@ -20,7 +20,7 @@ RUN apt-get update && \
     apt-get clean -y
 
 # Install required Python packages
-COPY ../requirements.txt /tmp/requirements.txt
+COPY requirements.txt /tmp/requirements.txt
 RUN pip install /tmp/requirements.txt
 
 # Install yq
