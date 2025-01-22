@@ -19,12 +19,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: dt-details
-                key: DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION
+                key: DT_ENDPOINT
           - name: K6_DYNATRACE_APITOKEN
             valueFrom:
               secretKeyRef:
                 name: dt-details
-                key: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
+                key: DT_API_TOKEN
           - name: LOAD_TEST_PURPOSE
             value: "training"
       volumes:
