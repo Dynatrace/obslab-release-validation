@@ -670,18 +670,18 @@ components:
 
 opentelemetry-collector:
   extraEnvs:
-    - name: DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION
+    - name: DT_ENDPOINT
       valueFrom:
         secretKeyRef:
           name: dt-details
           namespace: obslab-release-validation
-          key: DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION
-    - name: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
+          key: DT_ENDPOINT
+    - name: DT_API_TOKEN
       valueFrom:
         secretKeyRef:
           name: dt-details
           namespace: obslab-release-validation
-          key: DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION
+          key: DT_API_TOKEN
   image:
     repository: "otel/opentelemetry-collector-contrib"
   enabled: true
@@ -732,7 +732,7 @@ opentelemetry-collector:
 
     exporters:
       otlphttp/dynatrace:
-        endpoint: "${env:DT_ENDPOINT_OBSLAB_RELEASE_VALIDATION}/api/v2/otlp"
+        endpoint: "${env:DT_ENDPOINT}/api/v2/otlp"
         headers:
           Authorization: "Api-Token ${env:DT_API_TOKEN_OBSLAB_RELEASE_VALIDATION}"
 
