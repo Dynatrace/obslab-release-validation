@@ -13,18 +13,9 @@ OTEL_DEMO_VERSION="0.33.4"
 # # Build DT environment URLs
 DT_TENANT_APPS, DT_TENANT_LIVE = build_dt_urls(dt_env_id=DT_ENVIRONMENT_ID, dt_env_type=DT_ENVIRONMENT_TYPE)
 
-# Get correct SSO URL
-DT_SSO_TOKEN_URL = get_sso_token_url(dt_env_type=DT_ENVIRONMENT_TYPE)
-logger.info(f"DT_SSO_TOKEN_URL: {DT_SSO_TOKEN_URL}")
-
-# Set DT GEOLOCATION based on env type used
-# TODO: Find a better way here. If this was widely used, all load would be on one GEOLOCATION.
-DT_GEOLOCATION = get_geolocation(dt_env_type=DT_ENVIRONMENT_TYPE)
-logger.info(f"DT_GEOLOCATION: {DT_GEOLOCATION}")
-
-# Delete cluster first, in case this is a re-run
-logger.info("Deleting any previous cluster")
-run_command(["kind", "delete", "cluster"])
+# # Delete cluster first, in case this is a re-run
+# logger.info("Deleting any previous cluster")
+# run_command(["kind", "delete", "cluster"])
 
 # Find and replace placeholders
 # Commit up to repo
@@ -46,6 +37,8 @@ do_file_replace(pattern=".devcontainer/k6/k6-load-test-script.yaml", find_string
 # Replace placeholders in k6 Kubernetes YAML with realtime values
 do_file_replace(pattern=".devcontainer/k6/k6-after-change.yaml", find_string="CODESPACE_NAME_PLACEHOLDER", replace_string=CODESPACE_NAME, recursive=False)
 do_file_replace(pattern=".devcontainer/k6/k6-after-change.yaml", find_string="GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN_PLACEHOLDER", replace_string=GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN, recursive=False)
+# Replace placeholders in runtimeChange with realtime values
+do_file_replace(pattern="runtimeChange.sh", find_string="DT_ENDPOINT_PLACEHOLDER", replace_string=DT_TENANT_LIVE)
 
 # Create cluster
 logger.info("Creating new cluster")

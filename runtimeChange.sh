@@ -8,7 +8,7 @@ echo "Changing feature flag key: $1 to $2"
 # Step 1
 # Inform Dynatrace that a configuration change is occurring
 ##############
-curl -X POST "$DT_ENDPOINT/api/v2/events/ingest" \
+curl -X POST "DT_ENDPOINT_PLACEHOLDER/api/v2/events/ingest" \
   -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token $DT_API_TOKEN" -H "Content-Type: application/json; charset=utf-8" \
   -d "{
   \"title\": \"featureflag change\",
