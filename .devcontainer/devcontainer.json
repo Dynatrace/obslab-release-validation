@@ -44,7 +44,7 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "python3 environment_installer.py",
+	"postCreateCommand": "pip install -r /workspaces/$RepositoryName/requirements.txt && python /workspaces/$RepositoryName/environment_installer.py",
 
 	// // Add recommended secrets
 	"secrets": {
