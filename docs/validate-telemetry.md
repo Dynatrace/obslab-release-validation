@@ -13,7 +13,7 @@ When the script has completed, a success message will briefly be displayed (it i
 
 ## Wait For Demo to Start
 
-Wait for the demo application pods to start by using hte following command.
+Wait for the demo application pods to start by using the following command.
 
 ```
 kubectl -n default wait --for=condition=Ready --all --timeout 300s pod
