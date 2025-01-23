@@ -44,7 +44,7 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install -r /workspaces/$RepositoryName/requirements.txt && python /workspaces/$RepositoryName/environment_installer.py",
+	"postCreateCommand": "pip install -r /workspaces/$RepositoryName/.devcontainer/requirements.txt --break-system-packages && python3 /workspaces/$RepositoryName/environment_installer.py",
 
 	// // Add recommended secrets
 	"secrets": {
