@@ -44,7 +44,7 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "python3 cluster_installer.py",
+	"postCreateCommand": "python3 environment_installer.py",
 
 	// // Add recommended secrets
 	"secrets": {
