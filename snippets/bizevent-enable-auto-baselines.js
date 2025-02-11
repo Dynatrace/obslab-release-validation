@@ -1,5 +1,5 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "enable-auto-baselines"});
+  dynatrace.sendBizEvent('page_load', {"page": "6. enable-auto-baselines"});
 });
 </script>
