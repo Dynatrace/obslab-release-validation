@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -327,14 +332,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#format-dynatrace-environment-url" class="md-nav__link">
+  <a href="#dynatrace-details" class="md-nav__link">
     <span class="md-ellipsis">
-      Format Dynatrace Environment URL
+      Dynatrace Details
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Format Dynatrace Environment URL">
+    <nav class="md-nav" aria-label="Dynatrace Details">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#create-api-token" class="md-nav__link">
@@ -594,14 +617,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#format-dynatrace-environment-url" class="md-nav__link">
+  <a href="#dynatrace-details" class="md-nav__link">
     <span class="md-ellipsis">
-      Format Dynatrace Environment URL
+      Dynatrace Details
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Format Dynatrace Environment URL">
+    <nav class="md-nav" aria-label="Dynatrace Details">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#create-api-token" class="md-nav__link">
@@ -645,23 +686,61 @@
 
 
 <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "getting-started"});
+});
+</script>
+
 <p>You must have the following to use this hands on demo.</p>
 <ul>
 <li>A Dynatrace environment (<a href="https://dt-url.net/trial" target="_blank">sign up here</a>)</li>
 <li>A Dynatrace API token (see below)</li>
 </ul>
-<h2 id="format-dynatrace-environment-url">Format Dynatrace Environment URL<a class="headerlink" href="#format-dynatrace-environment-url" title="Permanent link">#</a></h2>
-<p>Save the Dynatrace environment URL:</p>
-<ul>
-<li>Without the trailing slash</li>
-<li>Without <code>.apps.</code> in the URL</li>
-</ul>
+<h2 id="dynatrace-details">Dynatrace Details<a class="headerlink" href="#dynatrace-details" title="Permanent link">#</a></h2>
+<h3 id="environment-id">Environment ID<a class="headerlink" href="#environment-id" title="Permanent link">#</a></h3>
+<p>Make a note of your Dynatrace environment ID.</p>
 <p>The generic format is:</p>
-<div class="highlight"><pre><span></span><code>https://&lt;EnvironmentID&gt;.&lt;Environment&gt;.&lt;URL&gt;
+<div class="highlight"><pre><span></span><code>https://&lt;EnvironmentID&gt;.apps.dynatrace.com
 </code></pre></div>
-<p>For example:
-<div class="highlight"><pre><span></span><code>https://abc12345.live.dynatrace.com
-</code></pre></div></p>
+<p>So the environment ID would be <code>abc12345</code> for this URL:</p>
+<div class="highlight"><pre><span></span><code>https://abc12345.apps.dynatrace.com
+</code></pre></div>
+<h3 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">#</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Unsure?</p>
+<p>If you are unsure, just use the word <code>live</code></p>
+</div>
+<p>You may be running in an environment other than <code>live</code>. You can see this by the URL structure.</p>
+<table>
+<thead>
+<tr>
+<th>URL structure</th>
+<th>Example</th>
+<th>Environment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>https://&lt;EnvironmentID&gt;.apps.dynatrace.com</code></td>
+<td>https://abc12345.apps.dynatrace.com</td>
+<td><code>live</code></td>
+</tr>
+<tr>
+<td><code>https://&lt;EnvironmentID&gt;.sprint.dynatracelabs.com</code></td>
+<td>https://abc12345.sprint.dynatracelabs.com</td>
+<td><code>sprint</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">Save the info</p>
+<p>You should now have 2 pieces of info:</p>
+<ul>
+<li>Environment ID: <code>abc12345</code></li>
+<li>Environment: <code>live</code></li>
+</ul>
+</div>
 <h3 id="create-api-token">Create API Token<a class="headerlink" href="#create-api-token" title="Permanent link">#</a></h3>
 <p>In Dynatrace:</p>
 <ul>
@@ -674,6 +753,15 @@
 </ul>
 </li>
 </ul>
+<div class="admonition success">
+<p class="admonition-title">Save the info</p>
+<p>You should now have 3 pieces of info:</p>
+<ul>
+<li>Environment ID: <code>abc12345</code></li>
+<li>Environment: <code>live</code></li>
+<li>Dynatrace API Token: <code>dt0c01.sample.********</code></li>
+</ul>
+</div>
 <h2 id="start-demo">Start Demo<a class="headerlink" href="#start-demo" title="Permanent link">#</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Enter Required Information</p>

@@ -32,8 +32,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -645,6 +650,12 @@
 <p>Click the image below to watch the 14min overview video on Youtube.</p>
 <p><a href="https://www.youtube.com/watch?v=91t_NWnTFWA" target="_blank"><img alt="Observability Lab: Log Problem Detection on YouTube" src="https://img.youtube.com/vi/91t_NWnTFWA/0.jpg" /></a></p>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "homepage"});
+});
+</script>
+
 <p>In this demo, you take on the role of a Product Manager or DevOps engineer. You are running an application, and wish to enable a new feature.</p>
 <p>The application is already instrumented to emit tracing data, using the <a href="https://opentelemetry.io" target="_blank">OpenTelemetry</a> standard. The demo system will be automatically configured to transport that data to Dynatrace for storage and processing.</p>
 <p>Your job is to:</p>

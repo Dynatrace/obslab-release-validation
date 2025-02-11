@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -645,6 +650,12 @@
 
 
   <h1>9. View Acceptance Test Results</h1>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "view-acceptance-test-results"});
+});
+</script>
 
 <h2 id="view-data">View Data<a class="headerlink" href="#view-data" title="Permanent link">#</a></h2>
 <p>Wait for all jobs to complete:</p>

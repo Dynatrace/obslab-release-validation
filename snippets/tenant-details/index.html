@@ -16,7 +16,7 @@
     
     
       
-        <title>Disclaimer - Dynatrace Observability Lab: Release Validation</title>
+        <title>Tenant details - Dynatrace Observability Lab: Release Validation</title>
       
     
     
@@ -72,6 +72,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#dynatrace-details" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -104,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Disclaimer
+              Tenant details
             
           </span>
         </div>
@@ -508,6 +513,47 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dynatrace-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynatrace Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynatrace Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -524,12 +570,51 @@
   
 
 
-  <h1>Disclaimer</h1>
+  <h1>Tenant details</h1>
 
-<div class="admonition warning">
-<p class="admonition-title">Support Policy</p>
-<p>This is a demo project created by the Developer Relations team at Dynatrace, showcasing integrations with open source technologies.</p>
-<p><strong>Support is provided via <a href="https://github.com/dynatrace/obslab-release-validation" target="_blank">GitHub issues</a> only</strong>. The materials provided in this repository are offered "as-is" without any warranties, express or implied. Use them at your own risk.</p>
+<h2 id="dynatrace-details">Dynatrace Details<a class="headerlink" href="#dynatrace-details" title="Permanent link">#</a></h2>
+<h3 id="environment-id">Environment ID<a class="headerlink" href="#environment-id" title="Permanent link">#</a></h3>
+<p>Make a note of your Dynatrace environment ID.</p>
+<p>The generic format is:</p>
+<div class="highlight"><pre><span></span><code>https://&lt;EnvironmentID&gt;.apps.dynatrace.com
+</code></pre></div>
+<p>So the environment ID would be <code>abc12345</code> for this URL:</p>
+<div class="highlight"><pre><span></span><code>https://abc12345.apps.dynatrace.com
+</code></pre></div>
+<h3 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">#</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Unsure?</p>
+<p>If you are unsure, just use the word <code>live</code></p>
+</div>
+<p>You may be running in an environment other than <code>live</code>. You can see this by the URL structure.</p>
+<table>
+<thead>
+<tr>
+<th>URL structure</th>
+<th>Example</th>
+<th>Environment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>https://&lt;EnvironmentID&gt;.apps.dynatrace.com</code></td>
+<td>https://abc12345.apps.dynatrace.com</td>
+<td><code>live</code></td>
+</tr>
+<tr>
+<td><code>https://&lt;EnvironmentID&gt;.sprint.dynatracelabs.com</code></td>
+<td>https://abc12345.sprint.dynatracelabs.com</td>
+<td><code>sprint</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">Save the info</p>
+<p>You should now have 2 pieces of info:</p>
+<ul>
+<li>Environment ID: <code>abc12345</code></li>
+<li>Environment: <code>live</code></li>
+</ul>
 </div>
 
 

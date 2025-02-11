@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -541,6 +546,12 @@
 
 
 <h1 id="create-site-reliability-guardian">Create Site Reliability Guardian<a class="headerlink" href="#create-site-reliability-guardian" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "create-srg"});
+});
+</script>
+
 <p><a href="https://docs.dynatrace.com/docs/platform-modules/automations/site-reliability-guardian" target="_blank">Site reliability guardians</a> are a mechanism to automate analysis when changes are made. They can be used in production (on a CRON) or as deployment checks (eg. pre and post deployment health checks, security checks, infrastructure health checks).</p>
 <p>We will create a guardian to check the <code>checkoutservice</code> microservice which is used during the purchase journey.</p>
 <ul>

@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -753,6 +758,12 @@
 
 
 <h1 id="enable-automatic-baselining-for-site-reliability-guardian">Enable Automatic Baselining for Site Reliability Guardian<a class="headerlink" href="#enable-automatic-baselining-for-site-reliability-guardian" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "enable-auto-baselines"});
+});
+</script>
+
 <p>Objectives that are set to "auto baseline" in Dynatrace Site Reliability Guardians require <code>5</code> runs in order to enable the baselines.</p>
 <p>In a real scenario, these test runs would likely be spread over hours, days or weeks. This provides Dynatrace with ample time to gather sufficient usage data.</p>
 <p>For demo purposes, 5 seperate "load tests" will be triggered in quick succession to enable the baselining.</p>

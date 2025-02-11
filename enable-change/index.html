@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -645,6 +650,12 @@
 
 
   <h1>8. Make a Change</h1>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "enable-change"});
+});
+</script>
 
 <p>A product manager informs you that they're ready to release their new feature. They ask you to enable the feature and run the load test in a dev environment.</p>
 <p>They tell you that the new feature is behind a flag called <code>paymentServiceFailure</code> (yes, an obvious name for this demo) and they tell you to change the <code>defaultValue</code> from <code>off</code> to <code>on</code>.</p>

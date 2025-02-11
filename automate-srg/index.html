@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -615,6 +620,12 @@
 
 
 <h1 id="automate-the-site-reliability-guardian">Automate the Site Reliability Guardian<a class="headerlink" href="#automate-the-site-reliability-guardian" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "automate-srg"});
+});
+</script>
+
 <p><a href="https://docs.dynatrace.com/docs/platform-modules/automations/site-reliability-guardian" target="_blank">Site reliability guardians</a> can be automated so they happen whenever you prefer (on demand / on schedule / event based). A <a href="https://docs.dynatrace.com/docs/platform-modules/automations/workflows" target="_blank">Dynatrace workflow</a> is used to achieve this.</p>
 <p>In this demo:</p>
 <ul>

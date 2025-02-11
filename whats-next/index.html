@@ -32,8 +32,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -595,6 +600,12 @@
 
 
 <h1 id="whats-next">What's Next?<a class="headerlink" href="#whats-next" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "whats-next"});
+});
+</script>
+
 <p>This tutorial demonstrated one way to perform release validation using feature flags and a pre-release load test.</p>
 <p>Go to the <a href="https://docs.dynatrace.com/docs/deliver/release-validation-automated">official Dynatrace release validation documentation</a> to find out more.</p>
 <h2 id="additional-links">Additional Links<a class="headerlink" href="#additional-links" title="Permanent link">#</a></h2>

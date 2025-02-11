@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/c6090fd9538c45f8_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -598,6 +603,12 @@
 Everything before now is a one-off task.</p>
 <p>In day-to-day operations, you would begin from here.</p>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "run-production-srg"});
+});
+</script>
+
 <h2 id="run-an-evaluation">Run an Evaluation<a class="headerlink" href="#run-an-evaluation" title="Permanent link">#</a></h2>
 <p>Now that the Site Reliability Guardian is trained, run another evaluation by triggering a load test.</p>
 <div class="admonition tip">
