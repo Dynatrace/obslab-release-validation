@@ -4,6 +4,8 @@
     
     In day-to-day operations, you would begin from here.
 
+--8<-- "snippets/bizevent-run-production-srg.js"
+
 ## Run an Evaluation
 
 Now that the Site Reliability Guardian is trained, run another evaluation by triggering a load test.

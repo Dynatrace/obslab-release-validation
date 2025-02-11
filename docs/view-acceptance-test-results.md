@@ -1,3 +1,5 @@
+--8<-- "snippets/bizevent-view-acceptance-test-results.js"
+
 ## View Data
 
 Wait for all jobs to complete:

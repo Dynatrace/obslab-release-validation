@@ -1,5 +1,7 @@
 # Getting Started
 
+--8<-- "snippets/bizevent-getting-started.js"
+
 You must have the following to use this hands on demo.
 
 * A Dynatrace environment ([sign up here](https://dt-url.net/trial){target="_blank"})

@@ -1,5 +1,7 @@
 # Enable Automatic Baselining for Site Reliability Guardian
 
+--8<-- "snippets/bizevent-enable-auto-baselines.js"
+
 Objectives that are set to "auto baseline" in Dynatrace Site Reliability Guardians require `5` runs in order to enable the baselines.
 
 In a real scenario, these test runs would likely be spread over hours, days or weeks. This provides Dynatrace with ample time to gather sufficient usage data.

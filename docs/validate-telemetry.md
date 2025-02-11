@@ -1,5 +1,7 @@
 # Start The Demo
 
+--8<-- "snippets/bizevent-validate-telemetry.js"
+
 !!! tip
     Right click and "open image in new tab" to see large images
 

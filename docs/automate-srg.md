@@ -1,5 +1,7 @@
 # Automate the Site Reliability Guardian
 
+--8<-- "snippets/bizevent-automate-srg.js"
+
 [Site reliability guardians](https://docs.dynatrace.com/docs/platform-modules/automations/site-reliability-guardian){target="_blank"} can be automated so they happen whenever you prefer (on demand / on schedule / event based). A [Dynatrace workflow](https://docs.dynatrace.com/docs/platform-modules/automations/workflows){target="_blank"} is used to achieve this.
 
 In this demo:

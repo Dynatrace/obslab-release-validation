@@ -1,3 +1,5 @@
+--8<-- "snippets/bizevent-enable-change.js"
+
 A product manager informs you that they're ready to release their new feature. They ask you to enable the feature and run the load test in a dev environment.
 
 They tell you that the new feature is behind a flag called `paymentServiceFailure` (yes, an obvious name for this demo) and they tell you to change the `defaultValue` from `off` to `on`.

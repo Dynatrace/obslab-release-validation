@@ -1,5 +1,7 @@
 # Create Site Reliability Guardian
 
+--8<-- "snippets/bizevent-create-srg.js"
+
 [Site reliability guardians](https://docs.dynatrace.com/docs/platform-modules/automations/site-reliability-guardian){target="_blank"} are a mechanism to automate analysis when changes are made. They can be used in production (on a CRON) or as deployment checks (eg. pre and post deployment health checks, security checks, infrastructure health checks).
 
 We will create a guardian to check the `checkoutservice` microservice which is used during the purchase journey.
