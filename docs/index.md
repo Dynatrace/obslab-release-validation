@@ -62,13 +62,6 @@ One example would be sending the SRG result to Jenkins to progress or prevent a 
 
 ![Logical Architecture](images/load-test-integration-flow.jpg)
 
-## Compatibility
-
-| Deployment         | Tutorial Compatible |
-|--------------------|---------------------|
-| Dynatrace Managed  | ❌                 |
-| Dynatrace SaaS     | ✔️                 |
-
 <div class="grid cards" markdown>
 - [Click Here to Begin :octicons-arrow-right-24:](getting-started.md)
 </div>
