@@ -1,0 +1,51 @@
+opentelemetry-collector:
+  enabled: false
+jaeger:
+  enabled: false
+grafana:
+  enabled: false
+opensearch:
+  enabled: false
+prometheus:
+  enabled: false
+
+default:
+  env:
+    - name: OTEL_SERVICE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: "metadata.labels['app.kubernetes.io/component']"
+    - name: OTEL_COLLECTOR_NAME
+      value: 'dynatrace-collector-opentelemetry-collector'
+
+components:
+  cart:
+    podAnnotations:
+      ownedBy: teamA
+      product: otel-demo-app
+      costCentre: centre1
+      deployment.release_stage: production
+      supportInfo: |+
+        ## Cart Service Issues Support Information
+        If cart service is having issues, please contact the owner
+        and review the [Ops runbook](https://hci34192.apps.dynatrace.com/ui/document/c21c01cb-b4ad-4eae-9279-a3853f38b1de)
+  flagd:
+    enabled: true
+    # Turn off flagd-ui as it always crashes and we don't need it
+    sidecarContainers: []
+    useDefault:
+      env: true
+    resources:
+      requests:
+        memory: 100Mi
+      limits:
+        memory: 300Mi
+  accounting:
+    enabled: true
+    resources:
+      requests:
+        memory: 100Mi
+      limits:
+        memory: 300Mi
+

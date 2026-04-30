@@ -2,25 +2,26 @@
 
 A product manager informs you that they're ready to release their new feature. They ask you to enable the feature and run the load test in a dev environment.
 
-They tell you that the new feature is behind a flag called `paymentServiceFailure` (yes, an obvious name for this demo) and they tell you to change the `defaultValue` from `off` to `on`.
+They tell you that the new feature is behind a flag called `paymentFailure` (yes, an obvious name for this demo) and they tell you to change the `defaultValue` from `off` to `on`.
 
 ## Update the Feature Flag and Inform Dynatrce
 
 Run the following script which notifies Dynatrace using a `CUSTOM_INFO` event of the change inc. the new value.
 
 ```
-./runtimeChange.sh paymentServiceFailure on
+source .env
+python runtime_change.py
 ```
 
 ## Change Flag Value
 
 Locate the `flags.yaml` file.
-Change the `defaultValue` of the `paymentServiceFailure` flag from `"off"` to `"on"` (line `84`).
+Change the `defaultValue` of the `paymentFailure` flag from `"off"` to `"on"` (line `84`).
 
 Apply those changes:
 
 ```
-kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
+kubectl apply -f flags.yaml
 ```
 
 You should see:

@@ -2,30 +2,20 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/kubernetes-helm
 {
 	"name": "obslab-release-validation",
-	"dockerFile": "Dockerfile",
-	//"name": "Kubernetes - Local Configuration",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	//"image": "mcr.microsoft.com/devcontainers/base:bullseye",
-
-	// do not change these if you want Docker in Docker support
-	"runArgs": ["--init", "--privileged", "--network=host"],
-	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind" ],
-	"overrideCommand": false,
-
-	// some base images require a specific user name
-	"remoteUser": "vscode",
-
-	// Install extensions
-	"customizations": {
-		"vscode": {	
-			// Set container specific settings
-			"settings": {
-				"terminal.integrated.defaultProfile.linux": "zsh"
-			},			
-			"extensions": [
-				"ms-azuretools.vscode-docker",
-				"ms-kubernetes-tools.vscode-kubernetes-tools"
-			]
+	"image": "ubuntu:noble",
+	
+	"features": {
+		// This is REQUIRED if you want to create k8s clusters (eg. kind) or docker containers
+		"ghcr.io/devcontainers/features/docker-in-docker:2.16.1": { "version": "29.2.1"} ,
+		"ghcr.io/mpriscella/features/kind:1.0.1": { "version": "v0.31.0" },
+		"ghcr.io/devcontainers/features/python:1.8.0": { "version": "3.14.3" },
+		"ghcr.io/devcontainers-extra/features/wget-apt-get:1.0.17": {}, // Intentionally no version specified as it's not available
+		"ghcr.io/devcontainers/features/github-cli:1.1.0": { "version": "2.87.3" },
+		// Kind is used, NOT minikube
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+			"version": "v1.35.2", // kubectl version
+			"helm": "v3.20.0", // helm version
+			"minikube": "none" // minikube version
 		}
 	},
 
@@ -44,7 +34,9 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install -r /workspaces/$RepositoryName/.devcontainer/requirements.txt --break-system-packages && python3 /workspaces/$RepositoryName/environment_installer.py",
+	"postCreateCommand": "pip install -r .devcontainer/requirements.txt && python environment_installer.py",
+	// When a user reconnects to this container, ensure the kubeconfig is meshed so kubectl works
+	"postAttachCommand": "python on_attach.py",
 
 	// // Add recommended secrets
 	"secrets": {

@@ -1,2 +1,6 @@
 site/*
 notes.txt
+.env
+bin/
+include/
+__pycache__/

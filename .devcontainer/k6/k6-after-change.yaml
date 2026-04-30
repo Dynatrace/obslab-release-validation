@@ -31,7 +31,7 @@ data:
     export default function main_load_test() {
       // Your main test here
       // For example, a simple GET request
-      http.get('https://CODESPACE_NAME_PLACEHOLDER-8080.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN_PLACEHOLDER', get_params);
+      http.get('http://localhost:8080', get_params);
       sleep(1);
     }
 
